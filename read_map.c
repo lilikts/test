@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:11:13 by lkloters          #+#    #+#             */
-/*   Updated: 2024/12/13 16:47:46 by lkloters         ###   ########.fr       */
+/*   Updated: 2024/12/16 17:24:43 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	open_file(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error!\n");
+		ft_printf("Error! Wrong path!\n");
 		exit(1);
 
 	}
@@ -62,4 +62,10 @@ void	read_map (char *path)
 	fd = open_file(path);
 	map = read_lines(fd);
 	close (fd);
+}
+
+void bsp ( t_map *map)
+{
+	map-> grid =ergebniss der map;
+	
 }
