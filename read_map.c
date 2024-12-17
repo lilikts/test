@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:11:13 by lkloters          #+#    #+#             */
-/*   Updated: 2024/12/16 17:24:43 by lkloters         ###   ########.fr       */
+/*   Updated: 2024/12/17 09:56:49 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,44 +28,54 @@ int	open_file(char *path)
 char *read_lines(int fd)
 {
 	char	*line;
-	char	*map = NULL;
+	char	*map_string = NULL;
 	char	*temp;
 
 	while (line = get_next_line(fd))
 	{
-		if (map == NULL)
+		if (map_string == NULL)
 			temp = ft_strdup(line);
 		else
-			temp = ft_strjoin(map, line);
+			temp = ft_strjoin(map_string, line);
 		free(line);
-		free(map);
+		free(map_string);
 		if (!temp)
 		{
 			close(fd);
 			exit(1);
 		}
-		map = temp;
-		if (!map)
+		map_string = temp;
+		if (!map_string)
 		{
 			close(fd);
 			exit(1);
 		}
 	}
-	return (map);
+	return (map_string);
 }
-void	read_map (char *path)
+
+char	**read_map (char *path, t_map *map)
 {
 	int		fd;
-	char	*map;
+	char	*map_string;
 
-	valid_map_name(fd);
 	fd = open_file(path);
-	map = read_lines(fd);
+	valid_map_name(fd);
+	map_string = read_lines(fd);
+	if (!map_string)
+	{
+		ft_printf("Error! Map is empty!\n");
+		close(fd);
+		return (NULL);
+	}
+	map->grid = ft_split(map_string, '\n');
+	free (map_string);
+	if(!map->grid)
+	{
+		ft_printf("Error! Map is empty!\n");
+		close(fd);
+		return (NULL);
+	}
 	close (fd);
-}
-
-void bsp ( t_map *map)
-{
-	map-> grid =ergebniss der map;
-	
+	return (map->grid);
 }

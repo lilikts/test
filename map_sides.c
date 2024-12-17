@@ -15,13 +15,23 @@
 bool	calc_map_sides (t_map *map)
 {
 	int height;
+	int i;
 
+	i = 0;
 	height = 0;
 	while (map->grid[height])
 		height++;
 	map-> height = height;
-	map->width = ft_strlen(map->grid[0]);
-	if ()
+	while (i < map-> height)
+	{
+		if (ft_strlen(map-> grid[i]) != ft_strlen(map-> grid[0]))
+		{
+			ft_printf("Error! Map sides are not the same length!\n");
+			return (false);
+		}
+		i++;
+	}
+	return (true);
 }
 
 bool	left_map_side (t_map *map)
@@ -89,6 +99,21 @@ bool bottom_map_side (t_map *map)
 		if (map-> grid[map-> height - 1][i] != '1')
 			return (false);
 		i++;
+	}
+	return (true);
+}
+bool valid_map_sides (t_map *map)
+{
+	int valid;
+	
+	valid = left_map_side(map);
+	valid += right_map_side(map);
+	valid += top_map_side(map);
+	valid +=bottom_map_side(map);
+	if (valid != 4)
+	{
+		ft_printf("Error! Map sides contain invalid characters!\n");
+		return (false);
 	}
 	return (true);
 }
