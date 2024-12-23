@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:30:02 by lkloters          #+#    #+#             */
-/*   Updated: 2024/12/17 13:53:36 by lkloters         ###   ########.fr       */
+/*   Updated: 2024/12/23 18:00:23 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	valid_map_name(char *path)
 		exit(1);
 	}
 }
-bool	calc_map_sides (t_map *map)
+bool	valid_map_sides (t_map *map)
 {
 	int height;
 	int i;
@@ -60,30 +60,7 @@ bool	calc_map_sides (t_map *map)
 	}
 	return (true);
 }
-bool	valid_map_sides (t_map *map)
-{
-	int valid;
-	int i;
-	int height;
 
-	i = 0;
-	valid = 0;
-	height = 0;
-	calc_map_sides(map);
-	if (i == map-> height)
-	{
-		valid = left_map_side(map);
-		valid += right_map_side(map);
-		valid += top_map_side(map);
-		valid +=bottom_map_side(map);
-		if (valid != 4)
-		{
-			ft_printf("Error! Map sides contain invalid characters!\n");
-			return (false);
-		}
-	}
-	return (true);
-}
 bool    valid_chars(t_map *map)
 {
     int valid;
@@ -99,8 +76,51 @@ bool    valid_chars(t_map *map)
     }
     return (true);
 }
- 
- bool   map_accessability()
- {
-    
- }
+ bool    valid_player(t_map *map, t_game *game)
+{
+    int x;
+    int y;
+
+    y = 0;
+
+    while (y < map-> height)
+    {
+        x = 0;
+		while (x < map-> width)
+        {
+            if (map-> grid[y][x] == 'P')
+            {
+                game-> player_pos_x = x;
+                game-> player_pos_y = y;
+                return (true);
+            }
+            x++;
+        }
+        y++;
+    }
+    return (false);
+}
+bool    valid_collectable(t_map *map, t_game *game)
+{
+	int x;
+    int y;
+	int num_collectables;
+
+    y = 0;
+	num_collectables = 0;
+
+    while (y < map-> height)
+    {
+        x = 0;
+		while (x < map-> width)
+        {
+            if (map-> grid[y][x] == 'C')
+                num_collectables += 1;
+            x++;
+        }
+        y++;
+    }
+	if (num_collectables < 1)
+    	return (false);
+	return (true);	
+}
