@@ -39,6 +39,27 @@ void	valid_map_name(char *path)
 		exit(1);
 	}
 }
+bool	calc_map_sides (t_map *map)
+{
+	int height;
+	int i;
+
+	i = 0;
+	height = 0;
+	while (map->grid[height])
+		height++;
+	map-> height = height;
+	while (i < map-> height)
+	{
+		if (ft_strlen(map-> grid[i]) != ft_strlen(map-> grid[0]))
+		{
+			ft_printf("Error! Map sides are not the same length!\n");
+			return (false);
+		}
+		i++;
+	}
+	return (true);
+}
 bool	valid_map_sides (t_map *map)
 {
 	int valid;
@@ -63,4 +84,23 @@ bool	valid_map_sides (t_map *map)
 	}
 	return (true);
 }
+bool    valid_chars(t_map *map)
+{
+    int valid;
+
+    valid = 0;
+    valid = valid_start(map);
+    valid += valid_exit(map);
+    valid += valid_collectables(map);
+    if (valid != 3)
+    {
+        ft_printf("Error! Map contains invalid charachters!\n");
+        return (false);
+    }
+    return (true);
+}
  
+ bool   map_accessability()
+ {
+    
+ }

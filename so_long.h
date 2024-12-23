@@ -21,4 +21,27 @@ typedef struct s_map
 	int height;
 } t_map;
 
+typedef struct s_texture
+{
+    mlx_texture_t   *background;
+    mlx_texture_t   *wall;
+    mlx_texture_t   *exit;
+    mlx_texture_t   *player;
+    mlx_texture_t   *collectable;
+} t_texture;
+
+typedef struct s_image
+{
+    mlx_image_t *background;
+    mlx_image_t *wall;
+    mlx_image_t *exit;
+    mlx_image_t *player;
+    mlx_image_t *collectable;
+} t_image;
+typedef struct s_game
+{
+    int player_pos_x;
+    int player_pos_y;
+} t_game;
+
 bool	calc_map_sides (t_map *map);
