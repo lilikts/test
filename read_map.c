@@ -6,13 +6,13 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:11:13 by lkloters          #+#    #+#             */
-/*   Updated: 2024/12/17 09:56:49 by lkloters         ###   ########.fr       */
+/*   Updated: 2024/12/28 15:18:57 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	open_file(char *path)
+static int	open_file(char *path)
 {
 	int	fd;
 	
@@ -25,7 +25,7 @@ int	open_file(char *path)
 	}
 	return (fd);
 }
-char *read_lines(int fd)
+static char *read_lines(int fd)
 {
 	char	*line;
 	char	*map_string = NULL;
@@ -60,7 +60,7 @@ char	**read_map (char *path, t_map *map)
 	char	*map_string;
 
 	fd = open_file(path);
-	valid_map_name(fd);
+	valid_map_name(path);
 	map_string = read_lines(fd);
 	if (!map_string)
 	{
@@ -78,4 +78,15 @@ char	**read_map (char *path, t_map *map)
 	}
 	close (fd);
 	return (map->grid);
+}
+
+void map_size(t_map *map)
+{
+	int height;
+	
+	height = 0;
+	while (map->grid[height])
+		height++;
+	map-> height = height;
+	map-> width = ft_strlen(map-> grid[0]);
 }

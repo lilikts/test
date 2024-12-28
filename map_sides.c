@@ -12,7 +12,6 @@
 
 #include "so_long.h"
 
-
 bool	left_map_side (t_map *map)
 {
 	int	i;
@@ -30,19 +29,13 @@ bool	left_map_side (t_map *map)
 bool right_map_side (t_map *map)
 {
 	int	i;
-	int height;
 
-	height = 0;
-	while (map->grid[height])
-		height++;
-	map-> width = ft_strlen(map-> grid[0]);
-	map-> height = height;
-	i = map-> height - 1;
-	while (map-> grid[i][map-> width - 1])
+	i = 0;
+	while (i < map->height)
 	{
 		if (map-> grid[i][map-> width - 1] != '1')
 			return (false);
-		i--;
+		i++;
 	}
 	return (true);
 }
@@ -51,7 +44,6 @@ bool top_map_side (t_map *map)
 {
 	int	i;
 
-	map-> width = ft_strlen(map-> grid[0]);
 	i = 0;
 	while (i < map-> width)
 	{
@@ -65,34 +57,13 @@ bool top_map_side (t_map *map)
 bool bottom_map_side (t_map *map)
 {
 	int	i;
-	int height;
 
-	height = 0;
-	while (map->grid[height])
-		height++;
-	map-> width = ft_strlen(map-> grid[0]);
-	map-> height = height;
 	i = 0;
 	while (i < map-> width)
 	{
 		if (map-> grid[map-> height - 1][i] != '1')
 			return (false);
 		i++;
-	}
-	return (true);
-}
-bool valid_map_sides (t_map *map)
-{
-	int valid;
-	
-	valid = left_map_side(map);
-	valid += right_map_side(map);
-	valid += top_map_side(map);
-	valid +=bottom_map_side(map);
-	if (valid != 4)
-	{
-		ft_printf("Error! Map sides contain invalid characters!\n");
-		return (false);
 	}
 	return (true);
 }
