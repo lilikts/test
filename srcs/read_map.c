@@ -6,37 +6,41 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:11:13 by lkloters          #+#    #+#             */
-/*   Updated: 2024/12/28 15:18:57 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/01/24 15:54:55 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-static int	open_file(char *path)
+static	int	open_file(char *path)
 {
 	int	fd;
-	
+
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_printf("Error! Wrong path!\n");
 		exit(1);
-
 	}
 	return (fd);
 }
-static char *read_lines(int fd)
+
+static char	*read_lines(int fd)
 {
-	char	*line;
+	char	*line = NULL;
 	char	*map_string = NULL;
 	char	*temp;
 
-	while (line = get_next_line(fd))
+	map_string = ft_strdup("");
+	if (!map_string)
 	{
-		if (map_string == NULL)
-			temp = ft_strdup(line);
-		else
-			temp = ft_strjoin(map_string, line);
+		close(fd);
+		exit(1);
+	}
+	while (line = get_next_line(fd) != NULL)
+	{
+
+		temp = ft_strjoin(map_string, line);
 		free(line);
 		free(map_string);
 		if (!temp)
@@ -45,16 +49,23 @@ static char *read_lines(int fd)
 			exit(1);
 		}
 		map_string = temp;
-		if (!map_string)
-		{
-			close(fd);
-			exit(1);
-		}
+		
 	}
 	return (map_string);
 }
 
-char	**read_map (char *path, t_map *map)
+static void	map_size(t_map *map)
+{
+	int	height;
+
+	height = 0;
+	while (map->grid[height])
+		height++;
+	map-> height = height;
+	map-> width = ft_strlen(map-> grid[0]);
+}
+
+void	read_map(char *path, t_map *map)
 {
 	int		fd;
 	char	*map_string;
@@ -65,28 +76,17 @@ char	**read_map (char *path, t_map *map)
 	if (!map_string)
 	{
 		ft_printf("Error! Map is empty!\n");
-		close(fd);
-		return (NULL);
+		free(map_string);
+		exit();
 	}
 	map->grid = ft_split(map_string, '\n');
 	free (map_string);
-	if(!map->grid)
+	if (!map->grid)
 	{
 		ft_printf("Error! Map is empty!\n");
 		close(fd);
-		return (NULL);
+		return ;
 	}
-	close (fd);
-	return (map->grid);
-}
-
-void map_size(t_map *map)
-{
-	int height;
-	
-	height = 0;
-	while (map->grid[height])
-		height++;
-	map-> height = height;
-	map-> width = ft_strlen(map-> grid[0]);
+	close(fd);
+	map_size(map);
 }

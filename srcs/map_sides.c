@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-bool	left_map_side (t_map *map)
+bool	left_map_side(t_map *map)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ bool	left_map_side (t_map *map)
 	return (true);
 }
 
-bool right_map_side (t_map *map)
+bool	right_map_side(t_map *map)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ bool right_map_side (t_map *map)
 	return (true);
 }
 
-bool top_map_side (t_map *map)
+bool	top_map_side(t_map *map)
 {
 	int	i;
 
@@ -54,7 +54,7 @@ bool top_map_side (t_map *map)
 	return (true);
 }
 
-bool bottom_map_side (t_map *map)
+bool	bottom_map_side(t_map *map)
 {
 	int	i;
 
