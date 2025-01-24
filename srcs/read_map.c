@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:11:13 by lkloters          #+#    #+#             */
-/*   Updated: 2025/01/24 15:54:55 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:37:26 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static char	*read_lines(int fd)
 		close(fd);
 		exit(1);
 	}
-	while (line = get_next_line(fd) != NULL)
+	while (line != NULL)
 	{
-
+		line = get_next_line(fd);
 		temp = ft_strjoin(map_string, line);
 		free(line);
 		free(map_string);
@@ -77,7 +77,7 @@ void	read_map(char *path, t_map *map)
 	{
 		ft_printf("Error! Map is empty!\n");
 		free(map_string);
-		exit();
+		exit(1);
 	}
 	map->grid = ft_split(map_string, '\n');
 	free (map_string);
