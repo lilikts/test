@@ -12,56 +12,56 @@
 
 #include "../includes/so_long.h"
 
-bool	left_map_side(t_map *map)
+bool	left_map_side(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (map-> grid[i])
+	while (game-> map_grid[i])
 	{
-		if (map-> grid[i][0] != '1')
+		if (game-> map_grid[i][0] != '1')
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-bool	right_map_side(t_map *map)
+bool	right_map_side(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (i < map->height)
+	while (i < game->map_height)
 	{
-		if (map-> grid[i][map-> width - 1] != '1')
+		if (game-> map_grid[i][game->map_width - 1] != '1')
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-bool	top_map_side(t_map *map)
+bool	top_map_side(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (i < map-> width)
+	while (i < game->map_width)
 	{
-		if (map-> grid[0][i] != '1')
+		if (game-> map_grid[0][i] != '1')
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-bool	bottom_map_side(t_map *map)
+bool	bottom_map_side(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (i < map-> width)
+	while (i < game->map_width)
 	{
-		if (map-> grid[map-> height - 1][i] != '1')
+		if (game->map_grid[game->map_height - 1][i] != '1')
 			return (false);
 		i++;
 	}

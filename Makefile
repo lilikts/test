@@ -23,15 +23,14 @@ MLXFTFLAGS = -L$(MLXFT_BUILD_DIR) -lmlx42 -Iinclude -lglfw -framework Cocoa -fra
 MLXFT_REPO = https://github.com/codam-coding-college/MLX42.git
 
 # Source files
-SRCS = 	clean_game.c \
-		map_accessibility.c \
-		map_sides.c \
+SRCS =	main.c \
 		read_map.c \
-        valid_map.c \
-		main.c \
-		map_chars.c \
-		movement.c \
-		render_map.c
+		# valid_map.c \
+		# map_accessibility.c \
+		# map_sides.c \
+		# map_chars.c \
+		# movement.c \
+		# render_map.c
 
 # Object files
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))

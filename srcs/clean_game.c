@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 15:15:52 by lkloters          #+#    #+#             */
-/*   Updated: 2025/01/24 15:54:55 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:08:29 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	cleanup_game(t_game *game)
 {
-	if (game->map)
-		free(game->map);
+	if (game)
+		free(game);
 	if (game->mlx)
 	{
 		mlx_terminate(game->mlx);

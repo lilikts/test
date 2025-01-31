@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:13:33 by lkloters          #+#    #+#             */
-/*   Updated: 2025/01/24 15:54:55 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:03:47 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ bool	valid_player(t_game *game)
 	int	y;
 
 	y = 0;
-	while (y < game->map-> height)
+	while (y < game->map_height)
 	{
 		x = 0;
-		while (x < game->map-> width)
+		while (x < game->map_width)
 		{
-			if (game->map-> grid[y][x] == 'P')
+			if (game->map_grid[y][x] == 'P')
 			{
-				game-> player_pos_x = x;
-				game-> player_pos_y = y;
+				game->player_pos_x = x;
+				game->player_pos_y = y;
 				return (true);
 			}
 			x++;
@@ -42,12 +42,12 @@ bool	valid_exit(t_game *game)
 	int	y;
 
 	y = 0;
-	while (y < game->map-> height)
+	while (y < game->map_height)
 	{
 		x = 0;
-		while (x < game->map-> width)
+		while (x < game->map_width)
 		{
-			if (game->map-> grid[y][x] == 'E')
+			if (game->map_grid[y][x] == 'E')
 				return (true);
 			x++;
 		}
@@ -64,12 +64,12 @@ bool	valid_collectable(t_game *game)
 
 	y = 0;
 	num_collectables = 0;
-	while (y < game->map-> height)
+	while (y < game->map_height)
 	{
 		x = 0;
-		while (x < game->map-> width)
+		while (x < game->map_width)
 		{
-			if (game->map-> grid[y][x] == 'C')
+			if (game->map_grid[y][x] == 'C')
 				num_collectables += 1;
 			x++;
 		}

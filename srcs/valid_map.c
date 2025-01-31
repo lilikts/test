@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:30:02 by lkloters          #+#    #+#             */
-/*   Updated: 2025/01/24 15:54:55 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:13:43 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	valid_map_name(char *path)
 	}
 }
 
-void	valid_map_size(t_map *map)
+void	valid_map_size(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	int str_length = ft_strlen(map->grid[i]);
-	while (i < map-> height)
+	int str_length = ft_strlen(game->map_grid[i]);
+	while (i < game->map_height)
 	{
-		if (str_length != map->width)
+		if (str_length != game->map_width)
 		{
 			ft_printf("Error! Map sides are not the same length!\n");
 			exit(1);
@@ -43,14 +43,14 @@ void	valid_map_size(t_map *map)
 	}
 }
 
-void	valid_map_sides(t_map *map)
+void	valid_map_sides(t_game *game)
 {
 	int	valid;
 
-	valid = left_map_side(map);
-	valid += right_map_side(map);
-	valid += top_map_side(map);
-	valid += bottom_map_side(map);
+	valid = left_map_side(game);
+	valid += right_map_side(game);
+	valid += top_map_side(game);
+	valid += bottom_map_side(game);
 	if (valid != 4)
 	{
 		ft_printf("Error! Map sides contain invalid characters!\n");
@@ -77,14 +77,14 @@ void	valid_accessibilty(t_game *game)
 {
 	char	**map_copy;
 
-	map_copy = duplicate_map(game->map);
+	map_copy = duplicate_map(game);
 	if (!map_copy)
 	{
 		ft_printf("Error! Failed to duplicate map!\n");
 		exit(1);
 	}
 	flood_fill_target(map_copy, game->player_pos_x, game->player_pos_y, '1');
-	if (is_accessible(game->map, map_copy) != 1)
+	if (is_accessible(game->map_grid, map_copy) != 1)
 	{
 		free_map(map_copy);
 		ft_printf("Error! Exit/Collectables are not accessible!");

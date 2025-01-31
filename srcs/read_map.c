@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 13:11:13 by lkloters          #+#    #+#             */
-/*   Updated: 2025/01/24 16:37:26 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:46:36 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static char	*read_lines(int fd)
 		close(fd);
 		exit(1);
 	}
+	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		line = get_next_line(fd);
 		temp = ft_strjoin(map_string, line);
 		free(line);
 		free(map_string);
@@ -49,29 +49,29 @@ static char	*read_lines(int fd)
 			exit(1);
 		}
 		map_string = temp;
-		
+		line = get_next_line(fd);
 	}
 	return (map_string);
 }
 
-static void	map_size(t_map *map)
+static void	map_size(t_game *game)
 {
 	int	height;
 
 	height = 0;
-	while (map->grid[height])
+	while (game->map_grid[height])
 		height++;
-	map-> height = height;
-	map-> width = ft_strlen(map-> grid[0]);
+	game->map_height = height;
+	game-> map_width = ft_strlen(game->map_grid[0]);
 }
 
-void	read_map(char *path, t_map *map)
+void	read_map(char *path, t_game *game)
 {
 	int		fd;
 	char	*map_string;
 
 	fd = open_file(path);
-	valid_map_name(path);
+	//valid_map_name(path);
 	map_string = read_lines(fd);
 	if (!map_string)
 	{
@@ -79,14 +79,14 @@ void	read_map(char *path, t_map *map)
 		free(map_string);
 		exit(1);
 	}
-	map->grid = ft_split(map_string, '\n');
+	game->map_grid = ft_split(map_string, '\n');
 	free (map_string);
-	if (!map->grid)
+	if (!game->map_grid)
 	{
 		ft_printf("Error! Map is empty!\n");
 		close(fd);
 		return ;
 	}
 	close(fd);
-	map_size(map);
+	map_size(game);
 }
