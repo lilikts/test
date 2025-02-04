@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 11:09:00 by lkloters          #+#    #+#             */
-/*   Updated: 2025/02/04 17:06:57 by lkloters         ###   ########.fr       */
+/*   Created: 2024/12/13 15:30:02 by lkloters          #+#    #+#             */
+/*   Updated: 2025/02/03 18:11:20 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_old.h"
 
 void	valid_map_name(char *path)
 {
@@ -22,9 +22,10 @@ void	valid_map_name(char *path)
 	if (!path || (len < 4) || (ft_strncmp(path + len - 4, valid_ending, 4)))
 	{
 		ft_printf("Error! Invalid map name!\n");
-		exit(1); // still need to do the free function
+		exit(1);
 	}
 }
+
 void	valid_map_size(t_game *game)
 {
 	int	i;
@@ -51,6 +52,7 @@ void	valid_map_sides(t_game *game)
 		exit(1); // still need to do the free function
 	}
 }
+
 void	valid_chars(t_game *game)
 {
 	if (!valid_player(game) || !valid_exit(game) || !valid_collectable(game))
@@ -71,11 +73,11 @@ void	valid_accessibilty(t_game *game)
 		exit(1);
 	}
 	flood_fill_target(map_copy, game->player_pos_x, game->player_pos_y, '1');
-	if (is_accessible(game, map_copy) != 1)
+	if (is_accessible(game->map_grid, map_copy) != 1)
 	{
-		//free_map(map_copy);
+		free_map(map_copy);
 		ft_printf("Error! Exit/Collectables are not accessible!");
 		exit(1);
 	}
-	//free_map(map_copy);
+	free_map(map_copy);
 }

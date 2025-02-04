@@ -6,11 +6,11 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 12:19:58 by lkloters          #+#    #+#             */
-/*   Updated: 2025/01/24 15:54:55 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:11:20 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_old.h"
 
 static void	player_up(t_game *game)
 {

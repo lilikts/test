@@ -25,12 +25,13 @@ MLXFT_REPO = https://github.com/codam-coding-college/MLX42.git
 # Source files
 SRCS =	main.c \
 		read_map.c \
-		# valid_map.c \
-		# map_accessibility.c \
-		# map_sides.c \
-		# map_chars.c \
+		valid_map.c \
+		map_sides.c \
+		map_chars.c \
+		map_accessibility.c \
+		render_map.c \
 		# movement.c \
-		# render_map.c
+
 
 # Object files
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))

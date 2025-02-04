@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 18:12:15 by lkloters          #+#    #+#             */
-/*   Updated: 2025/02/04 11:11:09 by lkloters         ###   ########.fr       */
+/*   Created: 2024/12/13 13:11:13 by lkloters          #+#    #+#             */
+/*   Updated: 2025/02/03 18:13:06 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_old.h"
 
-int	open_file(char *path)
+static	int	open_file(char *path)
 {
 	int	fd;
 
@@ -20,12 +20,12 @@ int	open_file(char *path)
 	if (fd < 0)
 	{
 		ft_printf("Error! Wrong path!\n");
-		exit(1); //free
+		exit(1);
 	}
 	return (fd);
 }
 
-char	*read_lines(int fd)
+static char	*read_lines(int fd)
 {
 	char	*line = NULL;
 	char	*map_string = NULL;
@@ -54,7 +54,7 @@ char	*read_lines(int fd)
 	return (map_string);
 }
 
-void	map_size(t_game *game)
+static void	map_size(t_game *game)
 {
 	int	height;
 
@@ -71,6 +71,7 @@ void	read_map(char *path, t_game *game)
 	char	*map_string;
 
 	fd = open_file(path);
+	// valid_map_name(path);
 	map_string = read_lines(fd);
 	if (!map_string)
 	{

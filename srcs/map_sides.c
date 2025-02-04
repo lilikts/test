@@ -17,9 +17,9 @@ bool	left_map_side(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game-> map_grid[i])
+	while (game->map_grid[i] && i < game->map_height)
 	{
-		if (game-> map_grid[i][0] != '1')
+		if (game->map_grid[i][0] != '1')
 			return (false);
 		i++;
 	}
@@ -31,7 +31,7 @@ bool	right_map_side(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < game->map_height)
+	while (game->map_grid[i] && i < game->map_height)
 	{
 		if (game-> map_grid[i][game->map_width - 1] != '1')
 			return (false);
@@ -45,7 +45,7 @@ bool	top_map_side(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < game->map_width)
+	while (game->map_grid[0] && i < game->map_width)
 	{
 		if (game-> map_grid[0][i] != '1')
 			return (false);
@@ -59,7 +59,7 @@ bool	bottom_map_side(t_game *game)
 	int	i;
 
 	i = 0;
-	while (i < game->map_width)
+	while (game->map_grid[game->map_height] && i < game->map_width)
 	{
 		if (game->map_grid[game->map_height - 1][i] != '1')
 			return (false);

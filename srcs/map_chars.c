@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 15:13:33 by lkloters          #+#    #+#             */
-/*   Updated: 2025/01/31 16:03:47 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:31:59 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,3 +80,4 @@ bool	valid_collectable(t_game *game)
 	game->count_collectables = num_collectables;
 	return (true);	
 }
+// oly 1 0 E C P in map check is missing

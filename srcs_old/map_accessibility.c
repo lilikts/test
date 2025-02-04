@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 13:26:31 by lkloters          #+#    #+#             */
-/*   Updated: 2025/02/04 17:04:45 by lkloters         ###   ########.fr       */
+/*   Created: 2024/12/23 14:56:25 by lkloters          #+#    #+#             */
+/*   Updated: 2025/02/03 18:11:20 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_old.h"
 
 char	**duplicate_map(t_game *game)
 {
@@ -35,27 +35,40 @@ char	**duplicate_map(t_game *game)
 	return (map_copy);
 }
 
-bool	is_accessible(t_game *game, char **map_copy)
-{
-	int	x;
-	int	y;
+// void	free_map(char **map_copy)
+// {
+// 	int	i;
 
-	x = 0;
-	y = 0;
-	while (y < game->map_height)
-	{
-		x = 0;
-		while (x < game->map_width)
-		{
-			if (game->map_grid[y][x] == 'E' || game->map_grid[y][x] == 'C')
-			{
-				if (map_copy[y][x] != 'F')
-					return (false);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (true);
-}
+// 	i = 0;
+// 	if (!map_copy)
+// 		return ;
+// 	while (map_copy[i] != NULL)
+// 	{
+// 		free(map_copy[i]);
+// 		i++;
+// 	}
+// 	free(map_copy);
+// }
 
+// bool	is_accessible(t_game *game, char **map_copy)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	x = 0;
+// 	y = 0;
+// 	while (y < game->map_height)
+// 	{
+// 		while (x < game->map_width)
+// 		{
+// 			if (game->map_grid[y][x] == 'E' || game->map_grid[y][x] == 'C')
+// 			{
+// 				if (map_copy[y][x] != 'F')
+// 					return (false);
+// 			}
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	return (true);
+// }

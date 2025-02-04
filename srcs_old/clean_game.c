@@ -6,11 +6,11 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 15:15:52 by lkloters          #+#    #+#             */
-/*   Updated: 2025/01/31 14:08:29 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:11:20 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_old.h"
 
 void	cleanup_game(t_game *game)
 {
