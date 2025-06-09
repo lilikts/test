@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:12:08 by lkloters          #+#    #+#             */
-/*   Updated: 2025/06/09 18:05:36 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:57:22 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ void delete_textures(t_game *game)
 	mlx_delete_texture(game->texture->exit);
 	mlx_delete_texture(game->texture->player);
 	mlx_delete_texture(game->texture->collectable);
+	free(game->texture);
 }
 
-static void delete_images(t_game *game)
+void delete_images(t_game *game)
 {
 	mlx_delete_image(game->mlx, game->image->background);
 	mlx_delete_image(game->mlx, game->image->wall);
@@ -81,6 +82,7 @@ void close_game(void *param)
 	delete_images(game);
 	mlx_close_window(game->mlx);
 	free_map_copy(game->map_grid, game->map_height);
+	free(game);
 	mlx_terminate(game->mlx);
 	exit(EXIT_SUCCESS);
 }

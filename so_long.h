@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:48:57 by lkloters          #+#    #+#             */
-/*   Updated: 2025/06/09 18:07:43 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:00:30 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	create_map(char *path, t_game *game);
 void	render_map(t_game *game);
 void	create_game(t_game *game);
 void	keypress(mlx_key_data_t keycode, void *param);
+void 	delete_textures(t_game *game);
+void	delete_images(t_game *game);
 
 // error management
 void	free_split(char **array);

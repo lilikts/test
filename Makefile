@@ -23,7 +23,7 @@ MLXFT_LIB = $(MLXFT_BUILD_DIR)/$(MLXFT)
 MLXFTFLAGS = -L$(MLXFT_BUILD_DIR) -lmlx42 -Iinclude -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 MLXFT_REPO = https://github.com/codam-coding-college/MLX42.git
 
-SRCS =	error_management.c \
+SRCS =	clear_game.c \
 		check_map_accessibilty.c \
 		utils.c \
 		check_map_chars.c \
