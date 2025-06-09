@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 12:21:03 by lkloters          #+#    #+#             */
-/*   Updated: 2025/06/09 13:52:36 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/06/09 21:13:25 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	player_movement(t_game *game, int new_x, int new_y)
 {
 	if (game->map_grid[new_y][new_x] != '1')
 	{
+		game->move_count++;
+		ft_printf("Moves: %d\n", game->move_count);
 		if (game->map_grid[new_y][new_x] == 'E' && (game->collectables == 0))
 			close_game(game);
 		else if (game->map_grid[new_y][new_x] == 'C')
@@ -33,8 +35,8 @@ static void	player_movement(t_game *game, int new_x, int new_y)
 
 void	keypress(mlx_key_data_t keycode, void *param)
 {
-	t_game *game;
-	
+	t_game	*game;
+
 	game = (t_game *)param;
 	if (keycode.action == MLX_RELEASE)
 	{

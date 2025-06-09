@@ -6,15 +6,15 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 10:40:40 by lkloters          #+#    #+#             */
-/*   Updated: 2025/06/07 15:15:26 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/06/09 20:59:57 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char **duplicate_map(t_game *game)
+static char	**duplicate_map(t_game *game)
 {
-	char **map_copy;
+	char	**map_copy;
 	size_t	i;
 
 	map_copy = (char **)malloc(sizeof(char *) * (game->map_height + 1));
@@ -35,7 +35,7 @@ static char **duplicate_map(t_game *game)
 	return (map_copy);
 }
 
-static bool is_accessible(t_game *game, char **map_copy)
+static bool	is_accessible(t_game *game, char **map_copy)
 {
 	size_t	x;
 	size_t	y;
@@ -58,9 +58,9 @@ static bool is_accessible(t_game *game, char **map_copy)
 	return (true);
 }
 
-bool check_accessibilty(t_game *game)
+bool	check_accessibilty(t_game *game)
 {
-	char 	**map_copy;
+	char	**map_copy;
 	bool	result;
 
 	if (!game || !game->map_grid)

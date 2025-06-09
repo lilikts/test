@@ -31,7 +31,8 @@ SRCS =	clear_game.c \
 		validate_map.c \
 		create_game.c \
 		create_map.c \
-		movement.c
+		movement.c \
+		image_utils.c
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 DEPS := $(addprefix $(DEP_DIR)/, $(SRCS:%.c=%.d))

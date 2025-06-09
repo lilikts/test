@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:48:57 by lkloters          #+#    #+#             */
-/*   Updated: 2025/06/09 20:00:30 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/06/09 21:30:28 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-#define TILE 50
-#define WINDOW_NAME "so_long"
+# define TILE 50
+# define WINDOW_NAME "so_long"
 
 typedef struct s_image
 {
@@ -34,7 +34,7 @@ typedef struct s_image
 	mlx_image_t	*collectable;
 }	t_image;
 
-typedef struct	s_texture
+typedef struct s_texture
 {
 	mlx_texture_t	*background;
 	mlx_texture_t	*wall;
@@ -43,40 +43,37 @@ typedef struct	s_texture
 	mlx_texture_t	*collectable;
 }	t_texture;
 
-typedef struct	s_game
+typedef struct s_game
 {
-	char	**map_grid;
+	char		**map_grid;
 	size_t		map_height;
 	size_t		map_width;
-	int		collectables;
-	int		player_pos_x;
-	int		player_pos_y;
-	mlx_t	*mlx;
-	t_texture		*texture;
-	t_image			*image;
+	int			collectables;
+	int			player_pos_x;
+	int			player_pos_y;
+	int			move_count;
+	mlx_t		*mlx;
+	t_texture	*texture;
+	t_image		*image;
 }	t_game;
 
-// handle input
 void	create_map(char *path, t_game *game);
 void	render_map(t_game *game);
 void	create_game(t_game *game);
 void	keypress(mlx_key_data_t keycode, void *param);
-void 	delete_textures(t_game *game);
+void	delete_textures(t_game *game);
 void	delete_images(t_game *game);
-
-// error management
 void	free_split(char **array);
-void	handle_error(int fd, char *msg, void *ptr1, void *ptr2);
-void	free_map_copy(char ** map_copy, int height);
-
-// validate map
+void	handle_error(int fd, char *msg, void *ptr1);
+void	free_map_copy(char **map_copy, int height);
 bool	check_map_name(char *path);
 int		validate_map(t_game *game);
 bool	check_chars(t_game *game);
 bool	check_accessibilty(t_game *game);
-
-// utils
 void	init_game_values(t_game *game);
 void	map_size(t_game *game);
 void	close_game(void *param);
+void	load_texture(t_game *game);
+void	load_images(t_game *game);
+bool	has_double_newline(char *map_string);
 #endif

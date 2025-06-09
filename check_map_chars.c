@@ -6,24 +6,24 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 09:29:20 by lkloters          #+#    #+#             */
-/*   Updated: 2025/06/08 13:13:43 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/06/09 21:02:02 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool valid_end(t_game *game)
+static bool	valid_end(t_game *game)
 {
 	int	y;
 	int	x;
-	int exit_count;
-	
+	int	exit_count;
+
 	y = 0;
 	exit_count = 0;
 	while (game->map_grid[y])
 	{
 		x = 0;
-		while(game->map_grid[y][x])
+		while (game->map_grid[y][x])
 		{
 			if (game->map_grid[y][x] == 'E')
 				exit_count++;
@@ -47,7 +47,7 @@ static bool	valid_start(t_game *game)
 	while (game->map_grid[y])
 	{
 		x = 0;
-		while(game->map_grid[y][x])
+		while (game->map_grid[y][x])
 		{
 			if (game->map_grid[y][x] == 'P')
 			{
@@ -75,7 +75,7 @@ static bool	valid_collectables(t_game *game)
 	while (game->map_grid[i])
 	{
 		j = 0;
-		while(game->map_grid[i][j])
+		while (game->map_grid[i][j])
 		{
 			if (game->map_grid[i][j] == 'C')
 				collect_count++;
@@ -92,14 +92,14 @@ static bool	valid_collectables(t_game *game)
 bool	check_chars(t_game *game)
 {
 	char	c;
-	int	y;
-	int	x;
+	int		y;
+	int		x;
 
 	y = 0;
 	while (game->map_grid[y])
 	{
 		x = 0;
-		while(game->map_grid[y][x])
+		while (game->map_grid[y][x])
 		{
 			c = game->map_grid[y][x];
 			if (c != 'P' && c != 'E' && c != 'C' && c != '1' && c != '0')

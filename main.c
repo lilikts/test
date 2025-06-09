@@ -6,7 +6,7 @@
 /*   By: lkloters <lkloters@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:40:31 by lkloters          #+#    #+#             */
-/*   Updated: 2025/06/09 18:09:03 by lkloters         ###   ########.fr       */
+/*   Updated: 2025/06/09 21:44:09 by lkloters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	}
 	game = malloc(sizeof(t_game));
 	if (!game)
-		handle_error(-1, "Creating game failed!", NULL, NULL);
+		handle_error(-1, "Creating game failed!", NULL);
 	create_map(argv[1], game);
 	create_game(game);
 	return (0);
